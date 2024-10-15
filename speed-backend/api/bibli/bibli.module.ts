@@ -10,4 +10,4 @@ MongooseModule.forFeature([{ name: Bibli.name, schema: BibliSchema }]),
 controllers: [BibliController],
 providers: [BibliService],
 })
-export class BookModule {}
+export class BibliModule {}

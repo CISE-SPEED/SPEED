@@ -12,7 +12,7 @@ import {
     import { QueuebibliService } from './queuebibli.service';
     import { CreateQueuebibliDto } from './create-queuebibli.dto';
     import { error } from 'console';
-    @Controller('api/books')
+    @Controller('api/queuebibli')
     export class QueuebibliController {
     constructor(private readonly queuebibliService: QueuebibliService) {}
     @Get('/test')
@@ -28,7 +28,7 @@ return this.queuebibliService.findAll();
 throw new HttpException(
 {
 status: HttpStatus.NOT_FOUND,
-error: 'No Books found',
+error: 'No queueBibli found',
 },
 HttpStatus.NOT_FOUND,
 { cause: error },
@@ -44,7 +44,7 @@ return this.queuebibliService.findOne(id);
 throw new HttpException(
 {
 status: HttpStatus.NOT_FOUND,
-error: 'No Book found',
+error: 'No queueBibli found',
 },
 HttpStatus.NOT_FOUND,
 { cause: error },
@@ -56,12 +56,12 @@ HttpStatus.NOT_FOUND,
 async addQueueBibli(@Body() createQueuebibliDto: CreateQueuebibliDto) {
 try {
 await this.queuebibliService.create(createQueuebibliDto);
-return { message: 'Book added successfully' };
+return { message: 'queueBibli added successfully' };
 } catch {
 throw new HttpException(
 {
 status: HttpStatus.BAD_REQUEST,
-error: 'Unable to add this book',
+error: 'Unable to add this Queuebibli',
 },
 HttpStatus.BAD_REQUEST,
 { cause: error },
@@ -76,12 +76,12 @@ async updateQueueBibli(
 ) {
 try {
 await this.queuebibliService.update(id, createQueuebibliDto);
-return { message: 'Book updated successfully' };
+return { message: 'Queue bibli updated successfully' };
 } catch {
 throw new HttpException(
 {
 status: HttpStatus.BAD_REQUEST,
-error: 'Unable to update this book',
+error: 'Unable to update this queueBibli',
 },
 HttpStatus.BAD_REQUEST,
 { cause: error },
@@ -97,7 +97,7 @@ return await await this.queuebibliService.delete(id);
 throw new HttpException(
     {
         status: HttpStatus.NOT_FOUND,
-        error: 'No such a book',
+        error: 'No such a queueBibli',
         },
         HttpStatus.NOT_FOUND,
         { cause: error },

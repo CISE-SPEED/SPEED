@@ -10,4 +10,4 @@ MongooseModule.forFeature([{ name: Queuebibli.name, schema: QueuebibliSchema }])
 controllers: [QueuebibliController],
 providers: [QueuebibliService],
 })
-export class BookModule {}
+export class QueuebibliModule {}
