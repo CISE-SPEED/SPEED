@@ -2,7 +2,7 @@ import { Article } from "@/models/article.model";
 import { env } from "process";
 
 const BACKEND_URL =
-  env.NODE_ENV === "production"
+  env.VERCEL_ENV === "production"
     ? "https://speed-backend-ecru.vercel.app"
     : "http://localhost:8080";
 
