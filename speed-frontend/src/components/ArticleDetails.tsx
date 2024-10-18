@@ -7,7 +7,7 @@ export default function ArticleDetails({ id }: { id: string; }) {
 
     useEffect(() => {
         getArticle(id).then(a => setArticle(a));
-    }, [id, article]);
+    }, [id]);
 
     if (!article) {
         return <h1>Loading...</h1>;
