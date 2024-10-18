@@ -9,7 +9,7 @@ export default function Page() {
     return (
         <>
             <h1>Moderation Queue</h1>
-            <ArticleGrid articleSource={getArticlesByStatus('submitted')} onRowClick={(r: any) => router.push(`/moderate/${r._id}`)}></ArticleGrid>
+            <ArticleGrid articleSource={getArticlesByStatus('submitted')} onRowClick={r=> router.push(`/moderate/${r._id}`)}></ArticleGrid>
         </>
     );
 }

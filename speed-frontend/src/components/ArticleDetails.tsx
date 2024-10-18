@@ -1,12 +1,13 @@
+import { Article } from "@/models/article.model";
 import { getArticle } from "@/services/apiService";
 import { useEffect, useState } from "react";
 
 export default function ArticleDetails({ id }: { id: string; }) {
-    const [article, setArticle] = useState<any>();
+    const [article, setArticle] = useState<Article>();
 
     useEffect(() => {
         getArticle(id).then(a => setArticle(a));
-    }, []);
+    }, [id, article]);
 
     if (!article) {
         return <h1>Loading...</h1>;
