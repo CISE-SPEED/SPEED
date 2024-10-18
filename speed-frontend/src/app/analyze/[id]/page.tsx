@@ -1,3 +1,4 @@
+'use client';
 import ArticleDetails from '@/components/ArticleDetails';
 import { Button, FormControl, Input, InputLabel } from '@mui/material';
 import { useState } from 'react';
