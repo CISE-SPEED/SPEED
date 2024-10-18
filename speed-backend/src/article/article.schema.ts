@@ -12,6 +12,18 @@ export class Article {
 
     @Prop()
     status: ArticleStatus;
+
+    @Prop()
+    authors: string;
+
+    @Prop()
+    journal: string;
+
+    @Prop()
+    year: number;
+
+    @Prop()
+    doi: string;
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);
