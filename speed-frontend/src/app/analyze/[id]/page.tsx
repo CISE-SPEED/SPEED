@@ -3,7 +3,7 @@ import ArticleDetails from '@/components/ArticleDetails';
 import { Button, FormControl, Input, InputLabel } from '@mui/material';
 import { useState } from 'react';
 
-export default function Page({ params: { id } }: { id: string; params: { id: string; }; }) {
+export default function Page({ params: { id } }: { params: { id: string; }; }) {
 
     const [claim, setClaim] = useState("");
 

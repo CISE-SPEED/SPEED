@@ -1,3 +1,4 @@
+import { Article } from "@/models/article.model";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 
@@ -13,8 +14,8 @@ const statusDef: GridColDef = {
     field: 'status', headerName: 'Status', flex: 1
 };
 
-export default function ArticleGrid({ articleSource, showStatus, onRowClick }: { articleSource: Promise<object[]>; showStatus?: boolean; onRowClick?: (row: object) => void; }) {
-    const [data, setData] = useState<object[]>();
+export default function ArticleGrid({ articleSource, showStatus, onRowClick }: { articleSource: Promise<Article[]>; showStatus?: boolean; onRowClick?: (row: Article) => void; }) {
+    const [data, setData] = useState<Article[]>();
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -22,7 +23,7 @@ export default function ArticleGrid({ articleSource, showStatus, onRowClick }: {
             setData(d);
             setLoading(false);
         });
-    }, []);
+    }, [articleSource]);
 
     if (isLoading) return <p>Loading...</p>;
 
