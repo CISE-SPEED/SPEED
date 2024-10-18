@@ -25,3 +25,12 @@ export async function submitArticle(article: object): Promise<Response> {
     },
   });
 }
+
+export async function setArticleStatus(
+  id: string,
+  status: string
+): Promise<void> {
+  await fetch(`${BACKEND_URL}/articles/${id}?status=${status}`, {
+    method: "PUT",
+  });
+}
