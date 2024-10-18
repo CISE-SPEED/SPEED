@@ -1,10 +1,6 @@
 import { Article } from "@/models/article.model";
-import { env } from "process";
 
-const BACKEND_URL =
-  env.VERCEL_ENV === "production"
-    ? "https://speed-backend-ecru.vercel.app"
-    : "http://localhost:8080";
+const BACKEND_URL = "https://speed-backend-ecru.vercel.app";
 
 export async function getArticle(id: string): Promise<Article> {
   return await fetch(`${BACKEND_URL}/articles/${id}`).then((a) => a.json());
