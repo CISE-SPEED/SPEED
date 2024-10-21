@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Page from './Page';
 import { submitArticle } from '@/services/apiService';
+import '@testing-library/jest-dom/extend-expect';
+import { fireEvent, render, screen } from '@testing-library/react';
+import Page from './page';
 
 jest.mock('@/services/apiService');
 

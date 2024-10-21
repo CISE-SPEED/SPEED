@@ -24,6 +24,15 @@ export class Article {
 
     @Prop()
     doi: string;
+
+    @Prop()
+    rejectionReason: string;
+
+    @Prop()
+    practice: string;
+
+    @Prop()
+    claims: string;
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);

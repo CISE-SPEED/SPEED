@@ -9,6 +9,7 @@ export default function Analyze() {
     return (
         <>
             <h1>Analysis Queue</h1>
+            <h4>Please select an article below</h4>
             <ArticleGrid articleSource={getArticlesByStatus('approved')} onRowClick={r => router.push(`/analyze/${r._id}`)}></ArticleGrid>
         </>
     );

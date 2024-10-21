@@ -3,12 +3,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Article, ArticleStatus } from './article.schema';
 import { SubmitArticleDto } from './dto/submit-article.dto';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
 export class ArticleService {
   constructor(
     @InjectModel(Article.name) private articleModel: Model<Article>,
-  ) {}
+  ) { }
 
   public async submitArticle(dto: SubmitArticleDto): Promise<Article> {
     const newArticle = new this.articleModel({ ...dto, status: 'submitted' });
@@ -29,9 +30,9 @@ export class ArticleService {
     return article;
   }
 
-  public async setArticleStatus(id: string, status: string): Promise<void> {
+  public async updateArticle(id: string, dto: UpdateArticleDto): Promise<void> {
     const result = await this.articleModel
-      .updateOne({ _id: id }, { $set: { status } })
+      .updateOne({ _id: id }, { $set: { ...dto } })
       .exec();
 
     if (!result) {

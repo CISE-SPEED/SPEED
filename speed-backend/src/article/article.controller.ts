@@ -11,10 +11,11 @@ import {
 import { ArticleStatus } from './article.schema';
 import { ArticleService } from './article.service';
 import { SubmitArticleDto } from './dto/submit-article.dto';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Controller('articles')
 export class ArticleController {
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService) { }
 
   @Get()
   public async getArticles(@Query('status') status?: ArticleStatus) {
@@ -37,10 +38,7 @@ export class ArticleController {
   }
 
   @Put(':id')
-  public async setArticleStatus(
-    @Param('id') id: string,
-    @Query('status') status: string,
-  ) {
-    return this.articleService.setArticleStatus(id, status);
+  public async updateArticle(@Param('id') id: string, @Body() dto: UpdateArticleDto) {
+    return this.articleService.updateArticle(id, dto);
   }
 }

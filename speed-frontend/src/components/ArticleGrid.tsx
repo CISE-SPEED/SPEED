@@ -10,19 +10,36 @@ export const articleDef: GridColDef[] = [
   { field: "year", headerName: "Year", flex: 1 },
 ];
 
-const statusDef: GridColDef = {
-  field: "status",
-  headerName: "Status",
-  flex: 1,
+const extraColDefs = {
+  rejectionReason: {
+    field: "rejectionReason",
+    headerName: "Rejection reason",
+    flex: 3,
+  },
+  practice: {
+    field: "practice",
+    headerName: "Practice",
+    flex: 2,
+  },
+  claims: {
+    field: "claims",
+    headerName: "Claims",
+    flex: 3,
+  },
+  status: {
+    field: "status",
+    headerName: "Status",
+    flex: 1,
+  },
 };
 
 export default function ArticleGrid({
   articleSource,
-  showStatus,
+  extraCols,
   onRowClick,
 }: {
   articleSource: Promise<Article[]>;
-  showStatus?: boolean;
+  extraCols?: (keyof typeof extraColDefs)[];
   onRowClick?: (row: Article) => void;
 }) {
   const [data, setData] = useState<Article[]>();
@@ -41,7 +58,7 @@ export default function ArticleGrid({
     <DataGrid
       disableRowSelectionOnClick
       rows={data}
-      columns={[...articleDef, ...(showStatus ? [statusDef] : [])]}
+      columns={[...articleDef, ...(extraCols?.map(c => extraColDefs[c]) ?? [])]}
       getRowId={(r) => r._id}
       onRowClick={(e) => onRowClick?.(e.row)}
       slots={{ toolbar: GridToolbar }}
