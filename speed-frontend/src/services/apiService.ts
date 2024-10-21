@@ -22,15 +22,19 @@ export async function submitArticle(article: object): Promise<Response> {
     body: JSON.stringify(article),
     headers: {
       "Content-Type": "application/json",
-    },
+    }
   });
 }
 
-export async function setArticleStatus(
+export async function updateArticle(
   id: string,
-  status: string
+  article: object
 ): Promise<void> {
-  await fetch(`${BACKEND_URL}/articles/${id}?status=${status}`, {
+  await fetch(`${BACKEND_URL}/articles/${id}`, {
     method: "PUT",
+    body: JSON.stringify(article),
+    headers: {
+      "Content-Type": "application/json",
+    }
   });
 }

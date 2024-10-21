@@ -1,6 +1,6 @@
 'use client';
 import ArticleDetails from '@/components/ArticleDetails';
-import { setArticleStatus } from '@/services/apiService';
+import { updateArticle } from '@/services/apiService';
 import { Button, FormControl, Input, InputLabel } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -11,12 +11,12 @@ export default function Page({ params: { id } }: { params: { id: string; }; }) {
     const [reason, setReason] = useState("");
 
     const approve = async () => {
-        await setArticleStatus(id, 'approved');
+        await updateArticle(id, { status: 'approved' });
         router.push('/moderate');
     };
 
-    const reject = async() => {
-        await setArticleStatus(id, 'rejected');
+    const reject = async () => {
+        await updateArticle(id, { status: 'rejected', rejectionReason: reason });
         router.push('/moderate');
     };
 

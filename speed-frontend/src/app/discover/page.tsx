@@ -6,7 +6,7 @@ export default function Page() {
     return (
         <>
             <h1>Discover</h1>
-            <ArticleGrid articleSource={getArticlesByStatus('included')}></ArticleGrid>
+            <ArticleGrid articleSource={getArticlesByStatus('included')} extraCols={['practice', 'claims']}></ArticleGrid>
         </>
     );
 }

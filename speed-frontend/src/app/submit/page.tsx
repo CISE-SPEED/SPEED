@@ -96,7 +96,7 @@ export default function Page() {
             <ArticleGrid articleSource={getArticlesByStatus('submitted')}></ArticleGrid>
 
             <h1>Rejected</h1>
-            <ArticleGrid articleSource={getArticlesByStatus('rejected')}></ArticleGrid>
+            <ArticleGrid articleSource={getArticlesByStatus('rejected')} extraCols={['rejectionReason']}></ArticleGrid>
 
         </>
     );

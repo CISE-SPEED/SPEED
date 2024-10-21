@@ -1,6 +1,6 @@
 'use client';
 import ArticleDetails from '@/components/ArticleDetails';
-import { setArticleStatus } from '@/services/apiService';
+import { updateArticle } from '@/services/apiService';
 import { Button, FormControl, Input, InputLabel } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -8,13 +8,17 @@ import { useState } from 'react';
 export default function Page({ params: { id } }: { params: { id: string; }; }) {
     const router = useRouter();
 
-    const [claim, setClaim] = useState("");
+    const [practice, setPractice] = useState("");
+    const [claims, setClaims] = useState("");
 
-    const confirm = async() => {
-        await setArticleStatus(id, 'included');
+    const confirm = async () => {
+        await updateArticle(id, {
+            status: 'included',
+            practice,
+            claims
+        });
         router.push('/analyze');
-    }
-
+    };
 
     return (
         <>
@@ -22,11 +26,21 @@ export default function Page({ params: { id } }: { params: { id: string; }; }) {
             <ArticleDetails id={id}></ArticleDetails>
 
             <FormControl fullWidth margin="normal">
-                <InputLabel htmlFor="claim">Claim</InputLabel>
+                <InputLabel htmlFor="practice">Practice</InputLabel>
                 <Input
-                    id="reason"
-                    value={claim}
-                    onChange={(e) => setClaim(e.target.value)}
+                    id="practice"
+                    value={practice}
+                    onChange={(e) => setPractice(e.target.value)}
+                />
+            </FormControl>
+
+            <FormControl fullWidth margin="normal">
+                <InputLabel htmlFor="claims">Claims</InputLabel>
+                <Input
+                    multiline
+                    id="claims"
+                    value={claims}
+                    onChange={(e) => setClaims(e.target.value)}
                 />
             </FormControl>
 

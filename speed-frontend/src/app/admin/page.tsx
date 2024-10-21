@@ -6,7 +6,7 @@ export default function Page() {
     return (
         <>
             <h1>Admin</h1>
-            <ArticleGrid articleSource={getArticles()} showStatus></ArticleGrid>
+            <ArticleGrid articleSource={getArticles()} extraCols={['practice', 'claims', 'status']}></ArticleGrid>
         </>
     );
 }
